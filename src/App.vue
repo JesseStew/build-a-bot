@@ -28,16 +28,23 @@ export default {
 };
 </script>
 
+// Global
 <style>
 body {
   background: linear-gradient(to bottom, #555, #999);
   background-attachment: fixed;
 }
+</style>
 
+// App Specific
+<style scoped>
+.content >>> .robot-name { /* Deep Selector: selects all children */
+  color: red;
+  border: 2px solid red;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
-
 main {
   margin: 0 auto;
   padding: 30px;
