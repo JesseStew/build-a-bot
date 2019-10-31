@@ -73,6 +73,9 @@ function getNextValidIndex(index, length) {
 
 export default {
   name: 'RobotBuilder',
+  created() {
+    console.log('component created') // https://vuejs.org/v2/guide/instance.html
+  },
   data() {
     return {
       availableParts,
