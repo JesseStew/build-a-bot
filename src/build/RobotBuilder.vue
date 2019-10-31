@@ -147,7 +147,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .part {
   position: relative;
   width:165px;
