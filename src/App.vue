@@ -38,14 +38,6 @@ body {
 
 // App Specific
 <style scoped>
-/* .content >>> .robot-name { Deep Selector: selects all children
-  color: red;
-  border: 2px solid red;
-} */
-.content /deep/ .robot-name { /* Deep Selector: same, but is compatible with more css preprocessors */
-  color: red;
-  border: 2px solid red;
-}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
