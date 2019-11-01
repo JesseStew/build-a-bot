@@ -23,13 +23,13 @@ export default {
     parts: {
       type: Array,
       required: true,
-      validator: function(value) {
-        return ['left', 'right', 'top', 'bottom', 'center'].includes(value)
-      }
     },
     position: {
       type: String,
       required: true,
+      validator: function(value) {
+        return ['left', 'right', 'top', 'bottom', 'center'].includes(value)
+      },
     },
   },
   data() {
@@ -40,18 +40,31 @@ export default {
       return this.parts[this.selectedPartIndex];
     },
   },
+  // https://vuejs.org/v2/api/#updated
+  created() {
+    this.emitSelectedPart()
+  },
+  updated: function() {
+    this.emitSelectedPart()
+  },
   methods: {
+    emitSelectedPart() {
+      this.$emit('update:part', this.selectedPart)
+    },
     selectNextPart() {
       this.selectedPartIndex = getNextValidIndex(
         this.selectedPartIndex,
         this.parts.length,
       );
+      // console.log(this.selectedPart)
+      // this.emitSelectedPart() // updated: takes care of this
     },
     selectPreviousPart() {
       this.selectedPartIndex = getPreviousValidIndex(
         this.selectedPartIndex,
         this.parts.length,
       );
+      // this.emitSelectedPart() // updated: takes care of this
     },
 
   },

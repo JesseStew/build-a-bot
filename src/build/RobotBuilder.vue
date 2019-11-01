@@ -1,6 +1,21 @@
 <template>
   <div class="content">
-    <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
+    <div class="preview">
+      <div class="preview-content">
+        <div class="top-row">
+          <img :src="selectedRobot.head.src"/>
+        </div>
+        <div class="middle-row">
+          <img :src="selectedRobot.leftArm.src" class="rotate-left"/>
+          <img :src="selectedRobot.torso.src"/>
+          <img :src="selectedRobot.rightArm.src" class="rotate-right"/>
+        </div>
+        <div class="bottom-row">
+          <img :src="selectedRobot.base.src"/>
+        </div>
+      </div>
+      <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
+    </div>
     <div class="top-row">
       <!-- <div class="robot-name">
         {{selectedRobot.head.title}}
@@ -8,15 +23,36 @@
           Sale!
         </span>
       </div> -->
-      <PartSelector :parts="availableParts.heads" position="top" />
+      <!-- https://vuejs.org/v2/guide/components-custom-events.html#sync-Modifier -->
+      <PartSelector 
+        :parts="availableParts.heads"
+        position="top"
+        v-bind:part="selectedRobot.head"
+        v-on:update:part="selectedRobot.head = $event" />
     </div>
     <div class="middle-row">
-      <PartSelector :parts="availableParts.arms" position="left" />
-      <PartSelector :parts="availableParts.torsos" position="center" />
-      <PartSelector :parts="availableParts.arms" position="right" />
+      <PartSelector
+        :parts="availableParts.arms"
+        position="left"
+        v-bind:part="selectedRobot.leftArm"
+        v-on:update:part="selectedRobot.leftArm = $event" />
+      <PartSelector 
+        :parts="availableParts.torsos"
+        position="center"
+        v-bind:part="selectedRobot.torso"
+        v-on:update:part="selectedRobot.torso = $event" />
+      <PartSelector 
+        :parts="availableParts.arms"
+        position="right"
+        v-bind:part="selectedRobot.rightArm"
+        v-on:update:part="selectedRobot.rightArm = $event" />
     </div>
     <div class="bottom-row">
-      <PartSelector :parts="availableParts.bases" position="bottom" />
+      <PartSelector 
+        :parts="availableParts.bases"
+        position="bottom"
+        v-bind:part="selectedRobot.base"
+        v-on:update:part="selectedRobot.base = $event" />
     </div>
     <div>
       <h1>Cart</h1>
@@ -187,8 +223,7 @@ export default {
 }
 .add-to-cart {
   position: absolute;
-  right: 30px;
-  width: 220px;
+  width: 210px;
   padding: 3px;
   font-size: 16px;
 }
@@ -202,5 +237,26 @@ td, th {
 }
 .sale-border {
   border: 3px solid red;
+}
+.preview {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 210px;
+  height: 210px;
+  padding: 5px;
+}
+.preview-content {
+  border: 1px solid #999;
+}
+.preview img {
+  width: 50px;
+  height: 50px;
+}
+.rotate-right {
+  transform: rotate(90deg);
+}
+.rotate-left {
+  transform: rotate(-90deg);
 }
 </style>
