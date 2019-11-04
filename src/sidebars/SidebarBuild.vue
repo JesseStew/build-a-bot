@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .sidebar {
   font-size: 50px;
   transform: rotate(90deg);
