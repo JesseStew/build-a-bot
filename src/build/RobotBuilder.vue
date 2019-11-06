@@ -126,7 +126,7 @@ export default {
         robot.torso.cost +
         robot.rightArm.cost +
         robot.base.cost
-      this.cart.push(Object.assign({}, robot, { cost })) // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+      this.$store.commit('addRobotToCart', Object.assign({}, robot, { cost }))
       this.addedToCart = true
     },
   }
