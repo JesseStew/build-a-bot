@@ -1,3 +1,6 @@
+A project to help solidify my Vue.js tool set.
+Following Pluralsight's [Vue.js Fundamentals tutorial](https://www.pluralsight.com/courses/vuejs-fundamentals).
+
 # build-a-bot
 
 ## Project setup
