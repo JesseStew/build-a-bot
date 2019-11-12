@@ -44,18 +44,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'app',
   computed: {
-    rootFoo() {
-      return this.$store.state.foo
-    },
-    robotsFoo() {
-      return this.$store.state.robots.foo
-    },
-    usersFoo() {
-      return this.$store.state.users.foo
-    },
+    ...mapState({
+      rootFoo: 'foo',
+      usersFoo: state => state.users.foo,
+    }),
+    // Can only be used with namespaced modules
+    ...mapState('robots', {
+      robotsFoo: 'foo'
+    }),
     rootGetterFoo() {
       return this.$store.getters.foo
     },
@@ -64,7 +65,7 @@ export default {
     },
     usersGetterFoo() {
       return this.$store.getters['users/foo']
-    },
+    }, 
     cart() {
       return this.$store.state.robots.cart
     }
