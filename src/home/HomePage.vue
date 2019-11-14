@@ -13,6 +13,9 @@
 <script>
 export default {
   name: 'HelloWorld',
+  created() {
+    console.log(process.env.VUE_APP_TEST)
+  },
   props: {
     msg: String,
   },
