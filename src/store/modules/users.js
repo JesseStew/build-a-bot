@@ -11,9 +11,9 @@ export default {
     },
   },
   getters: {
-    foo(state) {
-      return `users-getter/${state.foo}`
-    }
+    // foo(state) {
+    //   return `users-getter/${state.foo}`
+    // }
   },
   actions: {
     signIn({ commit }) {
